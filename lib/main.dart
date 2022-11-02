@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/navigation/navigation_util.dart';
 
 void main() {
@@ -11,8 +11,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Sizer(builder: (context, orientation, deviceType) {
-      return MaterialApp(
+    return ScreenUtilInit(
+      builder: (context, child) => MaterialApp(
         title: 'MED TECH',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
@@ -20,7 +20,8 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: routeSplash,
         onGenerateRoute: NavigationUtils.generateRoute,
-      );
-    });
+      ),
+      designSize: const Size(375, 812),
+    );
   }
 }

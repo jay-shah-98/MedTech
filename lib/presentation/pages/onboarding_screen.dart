@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:medtech/core/navigation/navigation_util.dart';
-import 'package:sizer/sizer.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:medtech/core/utils/image_resources.dart';
 
@@ -97,8 +97,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           ),
         ),
         curve: Curves.fastLinearToSlowEaseIn,
-        controlsMargin: const EdgeInsets.all(16),
-        controlsPadding: const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
+        controlsMargin: EdgeInsets.symmetric(horizontal: 16.w,vertical: 16.h),
+        controlsPadding:  EdgeInsets.fromLTRB(8.w, 4.h, 8.w, 4.h),
         dotsDecorator: const DotsDecorator(
           size: Size(4.0, 4.0),
           color: Color(0xFFC4C4C4),

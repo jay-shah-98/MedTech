@@ -8,5 +8,7 @@ class ImageResources {
   static const String onboardingOne = '$onboardingPath/onboarding_one.svg';
   static const String onboardingTwo = '$onboardingPath/onboarding_two.svg';
   static const String onboardingThree = '$onboardingPath/onboarding_three.svg';
-  
+
+  static const welcomePath = '$assetPath/welcome';
+  static const welcomeImage = '$welcomePath/welcome.svg';
 }
