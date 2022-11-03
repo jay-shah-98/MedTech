@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medtech/presentation/pages/login/login_screen.dart';
 import 'package:medtech/presentation/pages/onboarding_screen.dart';
 import 'package:medtech/presentation/pages/welcome_screen.dart';
 
@@ -14,6 +15,10 @@ class NavigationUtils {
       case routeOnboarding:
         return MaterialPageRoute(builder: (_) => const OnboardingScreen());
       case routeWelcome:
+        return MaterialPageRoute(builder: (_) => const WelcomeScreen());
+      case routeLogin:
+        return MaterialPageRoute(builder: (_) => const LoginScreen());
+      case routeSignUp:
         return MaterialPageRoute(builder: (_) => const WelcomeScreen());
       default:
         return _errorRoute("Coming soon...");

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:medtech/core/navigation/navigation_util.dart';
 import 'package:medtech/core/utils/color_resources.dart';
 import 'package:medtech/core/utils/image_resources.dart';
 import 'package:medtech/presentation/widgets/custom_button.dart';
@@ -78,12 +79,17 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               SizedBox(
                 height: 16.h,
               ),
-              Text(
-                'LOGIN',
-                style: TextStyle(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w400,
-                  color: ColorResources.darkBlue.withOpacity(.45),
+              GestureDetector(
+                onTap: () {
+                  NavigationUtils.push(context, routeLogin);
+                },
+                child: Text(
+                  'LOGIN',
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                    color: ColorResources.darkBlue.withOpacity(.45),
+                  ),
                 ),
               )
             ],
