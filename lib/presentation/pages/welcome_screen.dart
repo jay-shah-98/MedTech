@@ -60,22 +60,24 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               ),
               CustomButton(
                 buttonText: 'SIGN UP WITH EMAIL',
-                onTap: () {},
+                onTap: () {
+                  NavigationUtils.push(context, routeSignUp);
+                },
               ),
               SizedBox(
                 height: 10.h,
               ),
               CustomButton(
-                buttonText: 'CONTIUNE WITH GOOGLE',
+                buttonText: 'CONTINUE WITH GOOGLE',
                 onTap: () {},
               ),
-              SizedBox(
-                height: 10.h,
-              ),
-              CustomButton(
-                buttonText: 'CONTINUE WITH FACEBOOK',
-                onTap: () {},
-              ),
+              // SizedBox(
+              //   height: 10.h,
+              // ),
+              // CustomButton(
+              //   buttonText: 'CONTINUE WITH FACEBOOK',
+              //   onTap: () {},
+              // ),
               SizedBox(
                 height: 16.h,
               ),
