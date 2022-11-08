@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:medtech/presentation/pages/login/login_screen.dart';
-import 'package:medtech/presentation/pages/onboarding_screen.dart';
-import 'package:medtech/presentation/pages/welcome_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../injector.dart';
+import '../../presentation/blocs/login_bloc/login_bloc.dart';
+import '../../presentation/blocs/signup_bloc/signup_bloc.dart';
+import '../../presentation/pages/dashboard/dashboard_screen.dart';
+import '../../presentation/pages/login/login_screen.dart';
+import '../../presentation/pages/onboarding_screen.dart';
+import '../../presentation/pages/signup/otp_screen.dart';
+import '../../presentation/pages/signup/signup_screen.dart';
+import '../../presentation/pages/signup/signup_success_screen.dart';
+import '../../presentation/pages/welcome_screen.dart';
 import '../../presentation/pages/splash_screen.dart';
 import 'navigation_constants.dart';
 
@@ -11,15 +19,54 @@ class NavigationUtils {
     Map<String, dynamic>? args = settings.arguments as Map<String, dynamic>?;
     switch (settings.name) {
       case routeSplash:
-        return MaterialPageRoute(builder: (_) => const SplashScreen());
+        return MaterialPageRoute(
+          builder: (_) => const SplashScreen(),
+          settings: settings,
+        );
       case routeOnboarding:
-        return MaterialPageRoute(builder: (_) => const OnboardingScreen());
+        return MaterialPageRoute(
+          builder: (_) => const OnboardingScreen(),
+          settings: settings,
+        );
       case routeWelcome:
-        return MaterialPageRoute(builder: (_) => const WelcomeScreen());
+        return MaterialPageRoute(
+          builder: (_) => const WelcomeScreen(),
+          settings: settings,
+        );
       case routeLogin:
-        return MaterialPageRoute(builder: (_) => const LoginScreen());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => Injector.resolve<LoginBloc>(),
+            child: const LoginScreen(),
+          ),
+          settings: settings,
+        );
       case routeSignUp:
-        return MaterialPageRoute(builder: (_) => const WelcomeScreen());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => Injector.resolve<SignupBloc>(),
+            child: const SignUpScreen(),
+          ),
+          settings: settings,
+        );
+      case routeOTP:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => Injector.resolve<SignupBloc>(),
+            child: const OTPScreen(),
+          ),
+          settings: settings,
+        );
+      case routeSignupSuccess:
+        return MaterialPageRoute(
+          builder: (_) => const SignupSuccessScreen(),
+          settings: settings,
+        );
+      case routeDashboard:
+        return MaterialPageRoute(
+          builder: (_) => const DashboardScreen(),
+          settings: settings,
+        );
       default:
         return _errorRoute("Coming soon...");
     }
