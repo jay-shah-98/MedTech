@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "216098069245",
+    "project_id": "medtech-2d328",
+    "storage_bucket": "medtech-2d328.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:216098069245:android:cb741b7bfde32cb5877c94",
+        "android_client_info": {
+          "package_name": "com.example.mdetech.medtech"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "216098069245-g2hbdcjgl6oqtiqc6fuq8dcqi99j7l0n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtBlVPIpUpAshS9e4xqQRJ3iJXpzNA1Ns"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "216098069245-g2hbdcjgl6oqtiqc6fuq8dcqi99j7l0n.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "216098069245-kc26laahecum7s50m3el3djvkm4hpnpn.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.medtech.medtech"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
