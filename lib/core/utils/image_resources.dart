@@ -11,4 +11,6 @@ class ImageResources {
 
   static const welcomePath = '$assetPath/welcome';
   static const welcomeImage = '$welcomePath/welcome.svg';
+
+  static const signupSuccess = '$assetPath/signup_success/success.svg';
 }
