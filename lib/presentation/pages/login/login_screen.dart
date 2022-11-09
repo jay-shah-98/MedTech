@@ -25,7 +25,6 @@ class _LoginScreenState extends State<LoginScreen> {
       body: BlocListener<LoginBloc, LoginState>(
         listener: (context, state) {
           if (state is LoginSuccess) {
-            print('H======================================================="');
             NavigationUtils.pushAndRemoveUntil(context, routeDashboard);
           }
         },
@@ -97,9 +96,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     CustomButton(
                       buttonText: 'LOGIN',
                       onTap: () {
-                        context.read<LoginBloc>().add(LoginWithCredential(
-                            email: emailController.text.trim(),
-                            password: passwordController.text.trim()));
+                        NavigationUtils.pushAndRemoveUntil(context, routeDashboard);
+                        // context.read<LoginBloc>().add(LoginWithCredential(
+                        //     email: emailController.text.trim(),
+                        //     password: passwordController.text.trim()));
                       },
                     ),
                   ],

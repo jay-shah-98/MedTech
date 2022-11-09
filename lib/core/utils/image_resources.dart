@@ -13,4 +13,12 @@ class ImageResources {
   static const welcomeImage = '$welcomePath/welcome.svg';
 
   static const signupSuccess = '$assetPath/signup_success/success.svg';
+
+  static const dashboardPath = '$assetPath/dashboard';
+  static const homeIcon = '$dashboardPath/home.svg';
+  static const notificationIcon = '$dashboardPath/notification.svg';
+  static const personIcon = '$dashboardPath/person.svg';
+  static const cartIcon = '$dashboardPath/cart.svg';
+  static const plusSignIcon = '$dashboardPath/plus_sign.svg';
+
 }

@@ -38,6 +38,10 @@ class AuthExceptionHandler {
         status =
             'The email has already been registered. Please login or reset your password.';
         break;
+        case "network-request-failed":
+        status =
+            'Please check your internet connection and try again.';
+        break;
       default:
         status = e.code;
     }
