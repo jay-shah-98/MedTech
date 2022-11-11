@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:medtech/presentation/pages/category_listing/cateogry_listing_screen.dart';
 
 import '../../injector.dart';
 import '../../presentation/blocs/login_bloc/login_bloc.dart';
@@ -65,6 +66,11 @@ class NavigationUtils {
       case routeDashboard:
         return MaterialPageRoute(
           builder: (_) => const DashboardScreen(),
+          settings: settings,
+        );
+      case routeCategoryListing:
+        return MaterialPageRoute(
+          builder: (_) => const CategoryListingScreen(),
           settings: settings,
         );
       default:
