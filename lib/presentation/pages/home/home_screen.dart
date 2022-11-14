@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:medtech/core/utils/color_resources.dart';
-import 'package:medtech/presentation/blocs/home_bloc/home_bloc.dart';
-import 'package:medtech/presentation/pages/home/widgets/deal_of_day_widget.dart';
-import 'package:medtech/presentation/pages/home/widgets/feature_brand_widget.dart';
-import 'package:medtech/presentation/pages/home/widgets/header_widget.dart';
-import 'package:medtech/presentation/pages/home/widgets/search_text_field.dart';
-import 'package:medtech/presentation/pages/home/widgets/top_categories_widget.dart';
 
-import '../../../core/utils/image_resources.dart';
+import '../../../core/utils/color_resources.dart';
+import '../../blocs/home_bloc/home_bloc.dart';
+import 'widgets/deal_of_day_widget.dart';
+import 'widgets/feature_brand_widget.dart';
+import 'widgets/header_widget.dart';
+import 'widgets/top_categories_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -49,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(
                     height: 24.h,
                   ),
-                  FeatureBrandWidget(brands : state.homeEntity.brands),
+                  FeatureBrandWidget(brands: state.homeEntity.brands),
                 ],
               ),
             );

@@ -6,6 +6,7 @@ import 'package:medtech/core/navigation/navigation_util.dart';
 import 'package:medtech/core/utils/image_resources.dart';
 import 'package:medtech/presentation/blocs/home_bloc/home_bloc.dart';
 import 'package:medtech/presentation/pages/home/home_screen.dart';
+import 'package:medtech/presentation/pages/profile/profile_screen.dart';
 
 import '../../../core/utils/color_resources.dart';
 import '../../../injector.dart';
@@ -28,7 +29,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     const HomeScreen(),
     const HomeScreen(),
     const HomeScreen(),
-    const HomeScreen(),
+    const ProfileScreen(),
   ];
 
   @override

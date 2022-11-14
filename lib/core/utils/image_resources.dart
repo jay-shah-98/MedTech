@@ -21,4 +21,12 @@ class ImageResources {
   static const cartIcon = '$dashboardPath/cart.svg';
   static const plusSignIcon = '$dashboardPath/plus_sign.svg';
 
+  static const profilePath = '$assetPath/profile';
+  static const billing = '$profilePath/billing.svg';
+  static const faq = '$profilePath/faq.svg';
+  static const myConsults = '$profilePath/my_consults.svg';
+  static const myOrders = '$profilePath/my_orders.svg';
+  static const privateAccount = '$profilePath/private_account.svg';
+  static const settings = '$profilePath/settings.svg';
+
 }
