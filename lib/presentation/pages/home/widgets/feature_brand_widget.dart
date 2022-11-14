@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medtech/domain/entities/brand_entity.dart';
 
 import '../../../../core/utils/color_resources.dart';
 
 class FeatureBrandWidget extends StatelessWidget {
-  const FeatureBrandWidget({Key? key}) : super(key: key);
+  final List<BrandEntity> brands;
+
+  const FeatureBrandWidget({Key? key, required this.brands}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +30,7 @@ class FeatureBrandWidget extends StatelessWidget {
           SizedBox(
             height: 126.h,
             child: ListView.builder(
-              itemCount: 5,
+              itemCount: brands.length,
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
@@ -44,12 +47,21 @@ class FeatureBrandWidget extends StatelessWidget {
                             CircleAvatar(
                               radius: 40.w,
                               backgroundColor: ColorResources.white,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(40.w),
+                                child: Image.network(
+                                  brands[index].image,
+                                  fit: BoxFit.contain,
+                                  width: 70.w,
+                                  height: 70.w,
+                                ),
+                              ),
                             ),
                             SizedBox(
                               height: 8.h,
                             ),
                             Text(
-                              'Himalaya Wellness',
+                              brands[index].name,
                               style: TextStyle(
                                 fontWeight: FontWeight.w400,
                                 fontSize: 13.sp,

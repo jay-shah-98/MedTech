@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medtech/core/utils/image_resources.dart';
+import 'package:medtech/presentation/blocs/home_bloc/home_bloc.dart';
 import 'package:medtech/presentation/pages/home/home_screen.dart';
 
 import '../../../core/utils/color_resources.dart';
+import '../../../injector.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);
@@ -17,7 +20,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
   int pageIndex = 0;
 
   final pages = [
-    const HomeScreen(),
+    BlocProvider(
+      create: (context) => Injector.resolve<HomeBloc>(),
+      child: const HomeScreen(),
+    ),
     const HomeScreen(),
     const HomeScreen(),
     const HomeScreen(),

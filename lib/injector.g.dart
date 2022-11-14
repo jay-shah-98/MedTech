@@ -29,6 +29,13 @@ class _$Injector extends Injector {
       ..registerSingleton((c) => UserSignUpEntity())
       ..registerSingleton<NetworkInfo>(
           (c) => NetworkInfoImpl(c<InternetConnectionChecker>()))
-      ..registerFactory((c) => InternetConnectionChecker());
+      ..registerFactory((c) => InternetConnectionChecker())
+      ..registerSingleton<RemoteDataSource>((c) => RemoteDataSourceImpl())
+      ..registerSingleton<MedTechRepository>((c) => MedTechRepositoryImpl(
+          remoteDataSource: c<RemoteDataSource>(),
+          networkInfo: c<NetworkInfo>()))
+      ..registerSingleton(
+          (c) => HomeUsecase(medTechRepository: c<MedTechRepository>()))
+      ..registerFactory((c) => HomeBloc(homeUsecase: c<HomeUsecase>()));
   }
 }

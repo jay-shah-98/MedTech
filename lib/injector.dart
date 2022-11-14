@@ -1,7 +1,12 @@
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:kiwi/kiwi.dart';
 import 'package:medtech/core/utils/custom_loading.dart';
+import 'package:medtech/data/datasources/remote_data_source.dart';
+import 'package:medtech/data/repositories/medtech_repository_impl.dart';
+import 'package:medtech/domain/repositories/mdetech_repository.dart';
+import 'package:medtech/domain/usecases/home_usecase.dart';
 import 'package:medtech/domain/usecases/login_usecase.dart';
+import 'package:medtech/presentation/blocs/home_bloc/home_bloc.dart';
 import 'package:medtech/presentation/blocs/login_bloc/login_bloc.dart';
 
 import 'data/datasources/remote_auth_data_source.dart';
@@ -45,5 +50,11 @@ abstract class Injector {
   /// [NetworkInfo]
   @Register.singleton(NetworkInfo, from: NetworkInfoImpl)
   @Register.factory(InternetConnectionChecker)
+
+  @Register.singleton(RemoteDataSource, from: RemoteDataSourceImpl)
+  @Register.singleton(MedTechRepository,from: MedTechRepositoryImpl)
+  @Register.singleton(HomeUsecase)
+  @Register.factory(HomeBloc)
+
   void _configure();
 }

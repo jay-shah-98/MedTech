@@ -65,7 +65,7 @@ class _CategoryListingScreenState extends State<CategoryListingScreen> {
                 SizedBox(
                   height: 15.h,
                 ),
-                const AllProductsWidget(),
+                AllProductsWidget(products: []),
                 SizedBox(
                   height: MediaQuery.of(context).padding.bottom,
                 ),

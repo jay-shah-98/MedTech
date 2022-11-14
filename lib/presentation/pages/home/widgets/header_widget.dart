@@ -12,7 +12,7 @@ class HeaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.of(context).size.width,
+      // width: MediaQuery.of(context).size.width,
       height: 215.h,
       child: Stack(
         clipBehavior: Clip.none,

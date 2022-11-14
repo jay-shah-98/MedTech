@@ -3,9 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medtech/core/navigation/navigation_util.dart';
 
 import '../../../../core/utils/color_resources.dart';
+import '../../../../domain/entities/category_entity.dart';
 
 class TopCategoriesWidget extends StatelessWidget {
-  const TopCategoriesWidget({Key? key}) : super(key: key);
+  final List<CategoryEntity> categories;
+
+  const TopCategoriesWidget({Key? key, required this.categories})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +32,7 @@ class TopCategoriesWidget extends StatelessWidget {
           SizedBox(
             height: 98.h,
             child: ListView.builder(
-              itemCount: 5,
+              itemCount: categories.length,
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
@@ -49,7 +53,7 @@ class TopCategoriesWidget extends StatelessWidget {
                             borderRadius: BorderRadius.circular(70),
                             boxShadow: [
                               BoxShadow(
-                                  offset: Offset(0, 6),
+                                  offset: const Offset(0, 6),
                                   blurRadius: 23,
                                   color: Colors.black.withOpacity(.05)),
                             ],
@@ -62,6 +66,12 @@ class TopCategoriesWidget extends StatelessWidget {
                               CircleAvatar(
                                 radius: 24.w,
                                 backgroundColor: Colors.cyan,
+                                child: Image.network(
+                                  categories[index].image,
+                                  fit: BoxFit.contain,
+                                  height: 16.w,
+                                  width: 16.w,
+                                ),
                               ),
                               SizedBox(
                                 height: 5.h,
@@ -69,7 +79,7 @@ class TopCategoriesWidget extends StatelessWidget {
                               Padding(
                                 padding: EdgeInsets.only(left: 5.w, right: 2.w),
                                 child: Text(
-                                  'Skin & Hair',
+                                  categories[index].name,
                                   style: TextStyle(
                                     fontWeight: FontWeight.w300,
                                     fontSize: 11.sp,

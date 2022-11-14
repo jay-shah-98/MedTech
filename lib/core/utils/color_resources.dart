@@ -7,6 +7,6 @@ class ColorResources {
   static const shadowColor = Color(0xff1a4157ff);
   static const errorColor = Colors.redAccent;
   static const bgColor = Color(0xffe5e5e5);
-  static const productBgColor = Color(0xffeeeef0);
+  static const productBgColor = Color(0xffEEEEF0);
   static const yellow = Color(0xffFFC000);
 }

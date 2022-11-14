@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medtech/domain/entities/product_entity.dart';
 import 'package:medtech/presentation/widgets/product_widget.dart';
 
 import '../../../../core/utils/color_resources.dart';
 
 class DealOfDayWidget extends StatelessWidget {
-  const DealOfDayWidget({Key? key}) : super(key: key);
+  final List<ProductEntity> products;
+
+  const DealOfDayWidget({Key? key, required this.products}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +31,7 @@ class DealOfDayWidget extends StatelessWidget {
           SizedBox(
             height: 250.h,
             child: ListView.builder(
-              itemCount: 5,
+              itemCount: products.length,
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
@@ -36,7 +39,7 @@ class DealOfDayWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   child: Row(
                     children: [
-                      const ProductWidget(),
+                      ProductWidget(product: products[index]),
                       SizedBox(
                         width: 10.w,
                       )

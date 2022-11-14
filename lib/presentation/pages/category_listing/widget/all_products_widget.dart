@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/color_resources.dart';
+import '../../../../domain/entities/product_entity.dart';
 import '../../../widgets/product_widget.dart';
 
 class AllProductsWidget extends StatelessWidget {
-  const AllProductsWidget({Key? key}) : super(key: key);
+  final List<ProductEntity> products;
+
+  const AllProductsWidget({Key? key, required this.products}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +28,9 @@ class AllProductsWidget extends StatelessWidget {
           height: 16.h,
         ),
         Padding(
-          padding: EdgeInsets.only(right:24.w),
+          padding: EdgeInsets.only(right: 24.w),
           child: GridView.builder(
-            itemCount: 5,
+            itemCount: products.length,
             shrinkWrap: true,
             padding: EdgeInsets.zero,
             physics: NeverScrollableScrollPhysics(),
@@ -42,6 +45,7 @@ class AllProductsWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 child: ProductWidget(
                   width: 157.w,
+                  product: products[index],
                 ),
               );
             },

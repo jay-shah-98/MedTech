@@ -1,4 +1,5 @@
 import 'package:bot_toast/bot_toast.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -18,7 +19,11 @@ Future<void> main() async {
       statusBarColor: ColorResources.white, // status bar color
       statusBarIconBrightness: Brightness.dark,
       statusBarBrightness: Brightness.light));
-  runApp(const MyApp());
+
+  runApp(DevicePreview(
+    enabled: false,
+    builder: (context) => const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -30,6 +35,8 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       builder: (context, child) => MaterialApp(
         title: 'MED TECH',
+        useInheritedMediaQuery: true,
+        locale: DevicePreview.locale(context),
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.blue,
@@ -38,7 +45,8 @@ class MyApp extends StatelessWidget {
         initialRoute: routeSplash,
         onGenerateRoute: NavigationUtils.generateRoute,
         builder: (context, child) {
-          child = botToastBuilder(context, FlutterEasyLoading(child: child));
+          child = DevicePreview.appBuilder(context,
+              botToastBuilder(context, FlutterEasyLoading(child: child)));
           return child;
         },
         navigatorObservers: [BotToastNavigatorObserver()],
@@ -46,6 +54,4 @@ class MyApp extends StatelessWidget {
       designSize: const Size(375, 812),
     );
   }
-
-
 }

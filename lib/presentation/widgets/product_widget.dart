@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medtech/domain/entities/product_entity.dart';
 import 'package:medtech/presentation/pages/home/widgets/triangle_painter.dart';
 
 import '../../core/utils/color_resources.dart';
 
 class ProductWidget extends StatelessWidget {
   final double width;
-  const ProductWidget({Key? key,this.width = 180}) : super(key: key);
+  final ProductEntity product;
+
+  const ProductWidget({Key? key, this.width = 180, required this.product})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +32,17 @@ class ProductWidget extends StatelessWidget {
                   color: ColorResources.productBgColor,
                   borderRadius: BorderRadius.circular(10),
                 ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.network(
+                    product.image,
+                    width: width.w,
+                    height: 154.h,
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
+              if(product.isDiscount)
               CustomPaint(
                 painter: TrianglePainter(),
                 size: Size(60.w, 60.w),
@@ -61,7 +75,7 @@ class ProductWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Accu-check Active Test Strip',
+                    product.name,
                     style: TextStyle(
                       color: ColorResources.darkBlue,
                       fontSize: 13.sp,
@@ -77,7 +91,7 @@ class ProductWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '\$112',
+                        '\$${product.price}',
                         style: TextStyle(
                           color: ColorResources.darkBlue,
                           fontSize: 16.sp,
@@ -108,7 +122,7 @@ class ProductWidget extends StatelessWidget {
                               width: 3.w,
                             ),
                             Text(
-                              4.2.toStringAsFixed(1),
+                              product.rating.toStringAsFixed(1),
                               style: TextStyle(
                                 color: ColorResources.white,
                                 fontSize: 13.sp,

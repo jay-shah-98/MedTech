@@ -50,6 +50,7 @@ dependencies:
   bot_toast: ^4.0.3
   flutter_easyloading: ^3.0.5
   cloud_firestore: ^4.0.5
+  device_preview: ^1.1.0
 
 dev_dependencies:
   flutter_test:
