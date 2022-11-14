@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medtech/presentation/pages/category_listing/cateogry_listing_screen.dart';
+import 'package:medtech/presentation/pages/notification/notification_screen.dart';
 
 import '../../injector.dart';
 import '../../presentation/blocs/login_bloc/login_bloc.dart';
@@ -71,6 +72,11 @@ class NavigationUtils {
       case routeCategoryListing:
         return MaterialPageRoute(
           builder: (_) => const CategoryListingScreen(),
+          settings: settings,
+        );
+      case routeNotification:
+        return MaterialPageRoute(
+          builder: (_) =>  NotificationScreen(),
           settings: settings,
         );
       default:

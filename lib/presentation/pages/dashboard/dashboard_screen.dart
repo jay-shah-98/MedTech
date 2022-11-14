@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:medtech/core/navigation/navigation_util.dart';
 import 'package:medtech/core/utils/image_resources.dart';
 import 'package:medtech/presentation/blocs/home_bloc/home_bloc.dart';
 import 'package:medtech/presentation/pages/home/home_screen.dart';
@@ -72,9 +73,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
           IconButton(
             enableFeedback: false,
             onPressed: () {
-              setState(() {
-                pageIndex = 1;
-              });
+              // setState(() {
+              //   pageIndex = 1;
+              // });
+              NavigationUtils.push(context, routeNotification);
             },
             icon: pageIndex == 1
                 ? SvgPicture.asset(
