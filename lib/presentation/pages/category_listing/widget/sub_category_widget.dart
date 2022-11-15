@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:medtech/domain/entities/sub_category_entity.dart';
-import 'package:medtech/presentation/pages/category_listing/widget/sub_category_product_widget.dart';
+import '../../../../domain/entities/sub_category_entity.dart';
+import 'sub_category_product_widget.dart';
 
 import '../../../../core/utils/color_resources.dart';
 import '../../../widgets/product_widget.dart';

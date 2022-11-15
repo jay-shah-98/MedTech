@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:medtech/core/navigation/navigation_util.dart';
+import '../../core/navigation/navigation_util.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:medtech/core/utils/image_resources.dart';
+import '../../core/utils/image_resources.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);

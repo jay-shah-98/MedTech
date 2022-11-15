@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:medtech/domain/entities/category_listing_entity.dart';
-import 'package:medtech/domain/usecases/category_listing_usecase.dart';
+import '../../../domain/entities/category_listing_entity.dart';
+import '../../../domain/usecases/category_listing_usecase.dart';
 
 import '../../../core/usecase/usecase.dart';
 

@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:medtech/core/error/exception.dart';
-import 'package:medtech/core/network/network_info.dart';
-import 'package:medtech/data/datasources/remote_auth_data_source.dart';
-import 'package:medtech/domain/entities/user_entity.dart';
-import 'package:medtech/domain/repositories/auth_repository.dart';
+import '../../core/error/exception.dart';
+import '../../core/network/network_info.dart';
+import '../datasources/remote_auth_data_source.dart';
+import '../../domain/entities/user_entity.dart';
+import '../../domain/repositories/auth_repository.dart';
 
 import '../../core/error/failure.dart';
 

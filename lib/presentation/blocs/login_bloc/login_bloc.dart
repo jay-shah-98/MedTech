@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:medtech/domain/usecases/login_usecase.dart';
+import '../../../domain/usecases/login_usecase.dart';
 
 import '../../../core/utils/logger.dart';
 import '../../../core/utils/toast_utils.dart';

@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:medtech/core/error/exception.dart';
-import 'package:medtech/core/utils/logger.dart';
+import '../../core/error/exception.dart';
+import '../../core/utils/logger.dart';
 
 import '../../domain/entities/user_signup_entity.dart';
 import '../../injector.dart';

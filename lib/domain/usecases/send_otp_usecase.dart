@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
-import 'package:medtech/core/error/failure.dart';
-import 'package:medtech/domain/repositories/auth_repository.dart';
+import '../../core/error/failure.dart';
+import '../repositories/auth_repository.dart';
 
 import '../../core/usecase/usecase.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medtech/core/utils/image_resources.dart';
+import '../../core/utils/image_resources.dart';
 
 import '../../core/navigation/navigation_util.dart';
 

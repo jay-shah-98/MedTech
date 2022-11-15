@@ -1,4 +1,4 @@
-import 'package:medtech/domain/entities/category_entity.dart';
+import '../../domain/entities/category_entity.dart';
 
 class CategoryModel {
   final String image;

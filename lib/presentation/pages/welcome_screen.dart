@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:medtech/core/navigation/navigation_util.dart';
-import 'package:medtech/core/utils/color_resources.dart';
-import 'package:medtech/core/utils/image_resources.dart';
-import 'package:medtech/presentation/widgets/custom_button.dart';
+import '../../core/navigation/navigation_util.dart';
+import '../../core/utils/color_resources.dart';
+import '../../core/utils/image_resources.dart';
+import '../widgets/custom_button.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});

@@ -1,7 +1,7 @@
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:kiwi/kiwi.dart';
-import 'package:medtech/domain/usecases/category_listing_usecase.dart';
-import 'package:medtech/presentation/blocs/category_listing_bloc/category_listing_bloc.dart';
+import 'domain/usecases/category_listing_usecase.dart';
+import 'presentation/blocs/category_listing_bloc/category_listing_bloc.dart';
 
 import 'core/utils/custom_loading.dart';
 import 'data/datasources/remote_data_source.dart';

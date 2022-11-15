@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:medtech/domain/entities/sub_category_entity.dart';
+import '../../../../domain/entities/sub_category_entity.dart';
 
 import '../../../../core/utils/color_resources.dart';
 

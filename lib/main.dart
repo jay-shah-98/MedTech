@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:medtech/core/utils/color_resources.dart';
-import 'package:medtech/firebase_options.dart';
-import 'package:medtech/injector.dart';
+import 'core/utils/color_resources.dart';
+import 'firebase_options.dart';
+import 'injector.dart';
 import 'core/navigation/navigation_util.dart';
 
 Future<void> main() async {

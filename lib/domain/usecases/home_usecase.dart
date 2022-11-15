@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:medtech/domain/repositories/medtech_repository.dart';
+import '../repositories/medtech_repository.dart';
 
 import '../../core/error/failure.dart';
 import '../../core/usecase/usecase.dart';

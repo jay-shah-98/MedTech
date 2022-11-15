@@ -4,7 +4,7 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:medtech/core/utils/toast_utils.dart';
+import '../../../core/utils/toast_utils.dart';
 
 import '../../../core/utils/logger.dart';
 import '../../../domain/entities/user_signup_entity.dart';

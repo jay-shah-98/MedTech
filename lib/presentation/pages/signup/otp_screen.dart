@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:medtech/core/utils/logger.dart';
-import 'package:medtech/domain/entities/user_signup_entity.dart';
-import 'package:medtech/injector.dart';
+import '../../../core/utils/logger.dart';
+import '../../../domain/entities/user_signup_entity.dart';
+import '../../../injector.dart';
 import 'package:pinput/pinput.dart';
 
 import '../../../core/navigation/navigation_util.dart';

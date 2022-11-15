@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:medtech/core/navigation/navigation_util.dart';
-import 'package:medtech/core/utils/image_resources.dart';
-import 'package:medtech/presentation/blocs/home_bloc/home_bloc.dart';
-import 'package:medtech/presentation/pages/home/home_screen.dart';
-import 'package:medtech/presentation/pages/profile/profile_screen.dart';
+import '../../../core/navigation/navigation_util.dart';
+import '../../../core/utils/image_resources.dart';
+import '../../blocs/home_bloc/home_bloc.dart';
+import '../home/home_screen.dart';
+import '../profile/profile_screen.dart';
 
 import '../../../core/utils/color_resources.dart';
 import '../../../injector.dart';

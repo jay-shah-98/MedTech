@@ -1,6 +1,6 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
-import 'package:medtech/core/utils/color_resources.dart';
+import 'color_resources.dart';
 
 class ToastUtils {
   static void showSuccess({required String message}) {

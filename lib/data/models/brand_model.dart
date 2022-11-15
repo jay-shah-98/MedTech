@@ -1,4 +1,4 @@
-import 'package:medtech/domain/entities/brand_entity.dart';
+import '../../domain/entities/brand_entity.dart';
 
 class BrandModel {
   final String image;

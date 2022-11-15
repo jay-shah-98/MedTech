@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:medtech/presentation/pages/home/widgets/search_text_field.dart';
+import 'search_text_field.dart';
 
 import '../../../../core/utils/color_resources.dart';
 import '../../../../core/utils/image_resources.dart';

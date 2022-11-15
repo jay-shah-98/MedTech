@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:medtech/core/utils/color_resources.dart';
+import 'color_resources.dart';
 
 
 class CustomAnimation extends EasyLoadingAnimation {

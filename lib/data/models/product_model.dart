@@ -1,4 +1,4 @@
-import 'package:medtech/domain/entities/product_entity.dart';
+import '../../domain/entities/product_entity.dart';
 
 class ProductModel {
   final String id;

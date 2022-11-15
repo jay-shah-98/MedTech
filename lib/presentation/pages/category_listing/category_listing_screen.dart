@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:medtech/core/utils/color_resources.dart';
-import 'package:medtech/presentation/blocs/category_listing_bloc/category_listing_bloc.dart';
-import 'package:medtech/presentation/pages/category_listing/widget/all_products_widget.dart';
-import 'package:medtech/presentation/pages/category_listing/widget/sub_category_widget.dart';
+import '../../../core/utils/color_resources.dart';
+import '../../blocs/category_listing_bloc/category_listing_bloc.dart';
+import 'widget/all_products_widget.dart';
+import 'widget/sub_category_widget.dart';
 
 import '../../../core/navigation/navigation_util.dart';
 
