@@ -78,6 +78,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           labelText: 'Your Name',
                           controller: nameController,
                           keyboardType: TextInputType.name,
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Name can\'t be empty';
+                            }
+                            return null;
+                          },
                         ),
                         SizedBox(
                           height: 16.h,
@@ -86,6 +92,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           labelText: 'Mobile Number',
                           controller: mobileController,
                           keyboardType: TextInputType.phone,
+                          validator: (value) {
+                            if (value!.isNotEmpty) {
+                              if (value.length != 10) {
+                                return 'Please enter a valid mobile number';
+                              } else {
+                                return null;
+                              }
+                            } else {
+                              return 'Mobile Number can\'t be empty';
+                            }
+                          },
                         ),
                         SizedBox(
                           height: 16.h,
@@ -94,6 +111,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           labelText: 'Email',
                           controller: emailController,
                           keyboardType: TextInputType.emailAddress,
+                          validator: (value) {
+                            Pattern pattern =
+                                r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))|([0-9]{10})+$';
+                            RegExp regex = RegExp(pattern.toString());
+                            if (value!.isNotEmpty) {
+                              if (!regex.hasMatch(value)) {
+                                return 'Please enter a valid email';
+                              } else {
+                                return null;
+                              }
+                            } else {
+                              return 'Email can\'t be empty';
+                            }
+                          },
                         ),
                         SizedBox(
                           height: 16.h,
@@ -103,6 +134,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           controller: passwordController,
                           obscure: true,
                           textInputAction: TextInputAction.done,
+                          validator: (value) {
+                            if (value!.isNotEmpty) {
+                              if (value.length < 6) {
+                                return 'Password must be 6 characters long';
+                              } else {
+                                return null;
+                              }
+                            } else {
+                              return 'Password can\'t be empty';
+                            }
+                          },
                         ),
                         SizedBox(
                           height: 24.h,
@@ -110,12 +152,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         CustomButton(
                           buttonText: 'CREATE ACCOUNT',
                           onTap: () {
-                            context.read<SignupBloc>().add(CreateAccountEvent(
-                                  name: nameController.text.trim(),
-                                  phoneNumber: mobileController.text.trim(),
-                                  email: emailController.text.trim(),
-                                  password: passwordController.text.trim(),
-                                ));
+                            if (formKey.currentState!.validate()) {
+                              context.read<SignupBloc>().add(
+                                    CreateAccountEvent(
+                                      name: nameController.text.trim(),
+                                      phoneNumber: mobileController.text.trim(),
+                                      email: emailController.text.trim(),
+                                      password: passwordController.text.trim(),
+                                    ),
+                                  );
+                            }
                           },
                         ),
                       ],
@@ -129,12 +175,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   child: Align(
                     alignment: Alignment.center,
-                    child: Text(
-                      '< Already have account? Login',
-                      style: TextStyle(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w400,
-                        color: ColorResources.darkBlue.withOpacity(.45),
+                    child: GestureDetector(
+                      onTap: () {
+                        NavigationUtils.pushReplacement(context, routeLogin);
+                      },
+                      child: Text(
+                        '< Already have account? Login',
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w400,
+                          color: ColorResources.darkBlue.withOpacity(.45),
+                        ),
                       ),
                     ),
                   ),

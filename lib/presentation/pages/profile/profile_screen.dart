@@ -4,6 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../core/utils/image_resources.dart';
 
 import '../../../core/utils/color_resources.dart';
+import '../../../domain/entities/user_entity.dart';
+import '../../../injector.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -66,7 +68,7 @@ class ProfileScreen extends StatelessWidget {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Text(
-                                    'Hi, Jay Shah',
+                                    'Hi, ${Injector.resolve<UserEntity>().name}',
                                     style: TextStyle(
                                       fontWeight: FontWeight.w700,
                                       fontSize: 20.sp,

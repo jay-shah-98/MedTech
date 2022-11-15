@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:medtech/injector.dart';
 import '../../core/error/exception.dart';
 import '../../core/network/network_info.dart';
 import '../datasources/remote_auth_data_source.dart';
@@ -66,6 +67,7 @@ class AuthRepositoryImpl implements AuthRepository {
           email: user.email ?? '',
           phoneNumber: user.phoneNumber ?? '',
         );
+        Injector.kiwiContainer.registerInstance<UserEntity>(userEntity);
         return Right(userEntity);
       } on AuthException catch (e) {
         return Left(ServerFailure(message: e.message));

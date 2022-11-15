@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import '../../../../core/navigation/navigation_util.dart';
+import '../../../../domain/entities/user_entity.dart';
+import '../../../../injector.dart';
 import 'search_text_field.dart';
 
 import '../../../../core/utils/color_resources.dart';
@@ -60,11 +63,16 @@ class HeaderWidget extends StatelessWidget {
                         ),
                       ),
                       const Spacer(),
-                      SvgPicture.asset(
-                        ImageResources.notificationIcon,
-                        height: 24.w,
-                        width: 24.w,
-                        color: ColorResources.white,
+                      GestureDetector(
+                        onTap: () {
+                          NavigationUtils.push(context, routeNotification);
+                        },
+                        child: SvgPicture.asset(
+                          ImageResources.notificationIcon,
+                          height: 24.w,
+                          width: 24.w,
+                          color: ColorResources.white,
+                        ),
                       ),
                       SizedBox(
                         width: 16.w,
@@ -85,7 +93,7 @@ class HeaderWidget extends StatelessWidget {
                   height: 16.h,
                 ),
                 Text(
-                  'Hi, Jay Shah',
+                  'Hi, ${Injector.resolve<UserEntity>().name}',
                   style: TextStyle(
                     fontWeight: FontWeight.w700,
                     fontSize: 24.sp,
