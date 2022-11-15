@@ -38,7 +38,13 @@ class TopCategoriesWidget extends StatelessWidget {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
-                    NavigationUtils.push(context, routeCategoryListing);
+                    NavigationUtils.push(
+                      context,
+                      routeCategoryListing,
+                      arguments: {
+                        'category_id': categories[index].id,
+                      },
+                    );
                   },
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(70),

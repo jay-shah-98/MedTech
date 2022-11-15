@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medtech/domain/entities/sub_category_entity.dart';
 import 'package:medtech/presentation/pages/category_listing/widget/sub_category_product_widget.dart';
 
 import '../../../../core/utils/color_resources.dart';
 import '../../../widgets/product_widget.dart';
 
 class SubCategoryWidget extends StatelessWidget {
-  const SubCategoryWidget({Key? key}) : super(key: key);
+  final List<SubCategoryEntity> subCategories;
+
+  const SubCategoryWidget({Key? key, required this.subCategories})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,15 +31,16 @@ class SubCategoryWidget extends StatelessWidget {
         SizedBox(
           height: 162.h,
           child: ListView.builder(
-            itemCount: 5,
+            itemCount: subCategories.length,
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               return ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const SubCategoryProductWidget(),
+                    SubCategoryProductWidget(subCategory: subCategories[index]),
                     SizedBox(
                       width: 10.w,
                     )

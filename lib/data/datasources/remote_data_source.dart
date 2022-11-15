@@ -1,10 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:medtech/core/error/exception.dart';
-import 'package:medtech/core/utils/logger.dart';
-import 'package:medtech/data/models/category_model.dart';
-import 'package:medtech/data/models/product_model.dart';
 
+import '../../core/error/exception.dart';
+import '../../core/utils/logger.dart';
+import '../models/category_model.dart';
+import '../models/product_model.dart';
 import '../models/brand_model.dart';
+import '../models/sub_category_model.dart';
 
 abstract class RemoteDataSource {
   Future<List<CategoryModel>> getCategories();
@@ -12,6 +13,8 @@ abstract class RemoteDataSource {
   Future<List<BrandModel>> getBrands();
 
   Future<List<ProductModel>> getDealsOfTheDay();
+
+  Future<List<SubCategoryModel>> getSubCategories({required String categoryId});
 }
 
 class RemoteDataSourceImpl implements RemoteDataSource {
@@ -74,6 +77,27 @@ class RemoteDataSourceImpl implements RemoteDataSource {
       throw ServerException(message: e.message ?? '');
     } catch (e) {
       print(e);
+      throw ServerException();
+    }
+  }
+
+  @override
+  Future<List<SubCategoryModel>> getSubCategories({required String categoryId}) async {
+    try {
+      List<SubCategoryModel> subCategoryList = [];
+      QuerySnapshot<Map<String, dynamic>> subCategoryDocs = await db
+          .collection("sub_categories")
+          .where('category_id', isEqualTo: categoryId)
+          .get();
+      for (var doc in subCategoryDocs.docs) {
+        Logger.log("${doc.id} => ${doc.data()}");
+        final subCategoryModel = SubCategoryModel.fromJson(doc.data(), doc.id);
+        subCategoryList.add(subCategoryModel);
+      }
+      return subCategoryList;
+    } on FirebaseException catch (e) {
+      throw ServerException(message: e.message ?? '');
+    } catch (e) {
       throw ServerException();
     }
   }

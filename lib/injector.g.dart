@@ -36,6 +36,10 @@ class _$Injector extends Injector {
           networkInfo: c<NetworkInfo>()))
       ..registerSingleton(
           (c) => HomeUsecase(medTechRepository: c<MedTechRepository>()))
-      ..registerFactory((c) => HomeBloc(homeUsecase: c<HomeUsecase>()));
+      ..registerFactory((c) => HomeBloc(homeUsecase: c<HomeUsecase>()))
+      ..registerSingleton((c) =>
+          CategoryListingUsecase(medTechRepository: c<MedTechRepository>()))
+      ..registerFactory((c) => CategoryListingBloc(
+          categoryListingUsecase: c<CategoryListingUsecase>()));
   }
 }

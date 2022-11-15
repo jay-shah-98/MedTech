@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:medtech/presentation/pages/category_listing/cateogry_listing_screen.dart';
-import 'package:medtech/presentation/pages/notification/notification_screen.dart';
 
 import '../../injector.dart';
 import '../../presentation/blocs/login_bloc/login_bloc.dart';
 import '../../presentation/blocs/signup_bloc/signup_bloc.dart';
+import '../../presentation/blocs/category_listing_bloc/category_listing_bloc.dart';
 import '../../presentation/pages/dashboard/dashboard_screen.dart';
 import '../../presentation/pages/login/login_screen.dart';
 import '../../presentation/pages/onboarding_screen.dart';
@@ -14,6 +13,8 @@ import '../../presentation/pages/signup/signup_screen.dart';
 import '../../presentation/pages/signup/signup_success_screen.dart';
 import '../../presentation/pages/welcome_screen.dart';
 import '../../presentation/pages/splash_screen.dart';
+import '../../presentation/pages/category_listing/category_listing_screen.dart';
+import '../../presentation/pages/notification/notification_screen.dart';
 import 'navigation_constants.dart';
 
 class NavigationUtils {
@@ -71,12 +72,15 @@ class NavigationUtils {
         );
       case routeCategoryListing:
         return MaterialPageRoute(
-          builder: (_) => const CategoryListingScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => Injector.resolve<CategoryListingBloc>(),
+            child: const CategoryListingScreen(),
+          ),
           settings: settings,
         );
       case routeNotification:
         return MaterialPageRoute(
-          builder: (_) =>  NotificationScreen(),
+          builder: (_) => NotificationScreen(),
           settings: settings,
         );
       default:

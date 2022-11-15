@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medtech/domain/entities/sub_category_entity.dart';
 
 import '../../../../core/utils/color_resources.dart';
 
 class SubCategoryProductWidget extends StatelessWidget {
-  const SubCategoryProductWidget({Key? key}) : super(key: key);
+  final SubCategoryEntity subCategory;
+
+  const SubCategoryProductWidget({Key? key, required this.subCategory})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +20,7 @@ class SubCategoryProductWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Stack(
             children: [
@@ -25,6 +30,15 @@ class SubCategoryProductWidget extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: ColorResources.productBgColor,
                   borderRadius: BorderRadius.circular(10),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.network(
+                    subCategory.image,
+                    width: 110.w,
+                    height: 99.h,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ],
@@ -39,7 +53,7 @@ class SubCategoryProductWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Sugar Substitute',
+                    subCategory.name,
                     style: TextStyle(
                       color: ColorResources.darkBlue,
                       fontSize: 13.sp,

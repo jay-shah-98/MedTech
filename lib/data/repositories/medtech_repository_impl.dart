@@ -1,16 +1,19 @@
 import 'package:dartz/dartz.dart';
-import 'package:medtech/core/error/exception.dart';
-import 'package:medtech/core/network/network_info.dart';
-import 'package:medtech/data/datasources/remote_data_source.dart';
-import 'package:medtech/data/models/brand_model.dart';
-import 'package:medtech/data/models/category_model.dart';
-import 'package:medtech/domain/entities/brand_entity.dart';
-import 'package:medtech/domain/entities/category_entity.dart';
-import 'package:medtech/domain/entities/home_entity.dart';
-import 'package:medtech/domain/entities/product_entity.dart';
-import 'package:medtech/domain/repositories/mdetech_repository.dart';
 
+import '../../core/error/exception.dart';
+import '../../core/network/network_info.dart';
 import '../../core/error/failure.dart';
+import '../../domain/entities/category_entity.dart';
+import '../../domain/entities/brand_entity.dart';
+import '../../domain/entities/category_listing_entity.dart';
+import '../../domain/entities/home_entity.dart';
+import '../../domain/entities/product_entity.dart';
+import '../../domain/entities/sub_category_entity.dart';
+import '../../domain/repositories/medtech_repository.dart';
+import '../datasources/remote_data_source.dart';
+import '../models/brand_model.dart';
+import '../models/category_model.dart';
+import '../models/sub_category_model.dart';
 import '../models/product_model.dart';
 
 class MedTechRepositoryImpl implements MedTechRepository {
@@ -51,6 +54,45 @@ class MedTechRepositoryImpl implements MedTechRepository {
         );
 
         return Right(homeEntity);
+      } on ServerException catch (e) {
+        if (e.message.isNotEmpty) {
+          return Left(ServerFailure(message: e.message));
+        } else {
+          return const Left(ServerFailure());
+        }
+      } catch (e) {
+        return const Left(ServerFailure());
+      }
+    } else {
+      return Left(NetworkFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, CategoryListingEntity>> getCategoryListing(
+      {required String categoryId}) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final futureData = await Future.wait([
+          remoteDataSource.getSubCategories(categoryId: categoryId),
+          remoteDataSource.getDealsOfTheDay(),
+        ]);
+        List<SubCategoryModel> subCategoryList =
+            futureData[0] as List<SubCategoryModel>;
+        List<ProductModel> productList = futureData[1] as List<ProductModel>;
+
+        List<SubCategoryEntity> subCategoryEntity =
+            subCategoryList.map((e) => e.toSubCategoryEntity()).toList();
+
+        List<ProductEntity> productEntity =
+            productList.map((e) => e.toProductEntity()).toList();
+
+        CategoryListingEntity categoryListingEntity = CategoryListingEntity(
+          subCategories: subCategoryEntity,
+          products: productEntity,
+        );
+
+        return Right(categoryListingEntity);
       } on ServerException catch (e) {
         if (e.message.isNotEmpty) {
           return Left(ServerFailure(message: e.message));
