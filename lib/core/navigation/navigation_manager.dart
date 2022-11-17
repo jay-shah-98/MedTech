@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:medtech/presentation/pages/product_details/product_details_screen.dart';
 
 import '../../injector.dart';
 import '../../presentation/blocs/login_bloc/login_bloc.dart';
@@ -81,6 +82,13 @@ class NavigationUtils {
       case routeNotification:
         return MaterialPageRoute(
           builder: (_) => NotificationScreen(),
+          settings: settings,
+        );
+      case routeProductDetails:
+        return MaterialPageRoute(
+          builder: (_) => ProductDetailsScreen(
+            productEntity: args!['product_entity'],
+          ),
           settings: settings,
         );
       default:

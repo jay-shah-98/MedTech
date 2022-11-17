@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medtech/core/navigation/navigation_util.dart';
 import '../../../../domain/entities/product_entity.dart';
 import '../../../widgets/product_widget.dart';
 
@@ -35,15 +36,26 @@ class DealOfDayWidget extends StatelessWidget {
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Row(
-                    children: [
-                      ProductWidget(product: products[index]),
-                      SizedBox(
-                        width: 10.w,
-                      )
-                    ],
+                return GestureDetector(
+                  onTap: () {
+                    NavigationUtils.push(
+                      context,
+                      routeProductDetails,
+                      arguments: {
+                        'product_entity': products[index],
+                      },
+                    );
+                  },
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Row(
+                      children: [
+                        ProductWidget(product: products[index]),
+                        SizedBox(
+                          width: 10.w,
+                        )
+                      ],
+                    ),
                   ),
                 );
               },

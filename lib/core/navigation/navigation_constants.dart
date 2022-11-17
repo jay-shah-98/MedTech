@@ -8,3 +8,4 @@ const String routeSplash = 'routeSplash';
 const String routeSignupSuccess = 'routeSignupSuccess';
 const String routeCategoryListing = 'routeCategoryListing';
 const String routeNotification = 'routeNotification';
+const String routeProductDetails = 'routeProductDetails';
