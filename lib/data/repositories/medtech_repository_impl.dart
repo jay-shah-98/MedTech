@@ -1,4 +1,6 @@
 import 'package:dartz/dartz.dart';
+import 'package:medtech/data/datasources/local_data_source.dart';
+import 'package:medtech/domain/entities/cart_entity.dart';
 
 import '../../core/error/exception.dart';
 import '../../core/network/network_info.dart';
@@ -19,10 +21,12 @@ import '../models/product_model.dart';
 class MedTechRepositoryImpl implements MedTechRepository {
   final RemoteDataSource remoteDataSource;
   final NetworkInfo networkInfo;
+  final LocalDataSource localDataSource;
 
   MedTechRepositoryImpl({
     required this.remoteDataSource,
     required this.networkInfo,
+    required this.localDataSource,
   });
 
   @override
@@ -104,6 +108,38 @@ class MedTechRepositoryImpl implements MedTechRepository {
       }
     } else {
       return Left(NetworkFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, CartEntity>> addToCart(
+      {required ProductEntity productEntity}) async {
+    try {
+      return Right(
+          await localDataSource.addToCart(productEntity: productEntity));
+    } catch (e) {
+      return const Left(ServerFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, CartEntity>> getCart() async {
+    try {
+      return Right(await localDataSource.getCart());
+    } catch (e) {
+      return const Left(ServerFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, CartEntity>> removeFromCart(
+      {required ProductEntity productEntity,
+      required bool removeProduct}) async {
+    try {
+      return Right(
+          await localDataSource.removeFromCart(productEntity: productEntity, removeProduct: removeProduct));
+    } catch (e) {
+      return const Left(ServerFailure());
     }
   }
 }

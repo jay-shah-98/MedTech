@@ -5,6 +5,12 @@ class ProductEntity {
   final num price;
   final num rating;
   final bool isDiscount;
+  int discount;
+  int quantity;
+
+  num get totalPrice {
+    return price * quantity;
+  }
 
   ProductEntity({
     required this.id,
@@ -13,5 +19,7 @@ class ProductEntity {
     required this.price,
     required this.rating,
     required this.isDiscount,
+    this.quantity = 0,
+    this.discount = 0,
   });
 }

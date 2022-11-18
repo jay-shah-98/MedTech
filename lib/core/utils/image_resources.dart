@@ -29,4 +29,6 @@ class ImageResources {
   static const privateAccount = '$profilePath/private_account.svg';
   static const settings = '$profilePath/settings.svg';
 
+  static const cartPath = '$assetPath/cart';
+  static const emptyCart = '$cartPath/empty_cart.svg';
 }

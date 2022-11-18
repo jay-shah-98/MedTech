@@ -33,13 +33,27 @@ class _$Injector extends Injector {
       ..registerSingleton<RemoteDataSource>((c) => RemoteDataSourceImpl())
       ..registerSingleton<MedTechRepository>((c) => MedTechRepositoryImpl(
           remoteDataSource: c<RemoteDataSource>(),
-          networkInfo: c<NetworkInfo>()))
+          networkInfo: c<NetworkInfo>(),
+          localDataSource: c<LocalDataSource>()))
       ..registerSingleton(
           (c) => HomeUsecase(medTechRepository: c<MedTechRepository>()))
       ..registerFactory((c) => HomeBloc(homeUsecase: c<HomeUsecase>()))
       ..registerSingleton((c) =>
           CategoryListingUsecase(medTechRepository: c<MedTechRepository>()))
       ..registerFactory((c) => CategoryListingBloc(
-          categoryListingUsecase: c<CategoryListingUsecase>()));
+          categoryListingUsecase: c<CategoryListingUsecase>()))
+      ..registerSingleton<LocalDataSource>((c) => LocalDataSourceImpl())
+      ..registerFactory(
+          (c) => ProductDetailsBloc(addToCartUsecase: c<AddToCartUsecase>()))
+      ..registerSingleton(
+          (c) => GetCartUsecase(medTechRepository: c<MedTechRepository>()))
+      ..registerSingleton(
+          (c) => AddToCartUsecase(medTechRepository: c<MedTechRepository>()))
+      ..registerSingleton((c) =>
+          RemoveFromCartUsecase(medTechRepository: c<MedTechRepository>()))
+      ..registerFactory((c) => CartBloc(
+          addToCartUsecase: c<AddToCartUsecase>(),
+          getCartUsecase: c<GetCartUsecase>(),
+          removeFromCartUsecase: c<RemoveFromCartUsecase>()));
   }
 }

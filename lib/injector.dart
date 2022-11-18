@@ -1,8 +1,13 @@
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:kiwi/kiwi.dart';
+import 'data/datasources/local_data_source.dart';
+import 'domain/usecases/add_to_cart_usecase.dart';
+import 'domain/usecases/get_cart_usecase.dart';
+import 'domain/usecases/remove_from_cart_usecase.dart';
+import 'presentation/blocs/cart_bloc/cart_bloc.dart';
+import 'presentation/blocs/product_details_bloc/product_details_bloc.dart';
 import 'domain/usecases/category_listing_usecase.dart';
 import 'presentation/blocs/category_listing_bloc/category_listing_bloc.dart';
-
 import 'core/utils/custom_loading.dart';
 import 'data/datasources/remote_data_source.dart';
 import 'data/repositories/medtech_repository_impl.dart';
@@ -57,8 +62,18 @@ abstract class Injector {
   @Register.singleton(HomeUsecase)
   @Register.factory(HomeBloc)
 
-  // CategoryListing
+  /// CategoryListing
   @Register.singleton(CategoryListingUsecase)
   @Register.factory(CategoryListingBloc)
+  @Register.singleton(LocalDataSource, from: LocalDataSourceImpl)
+
+  /// Product details
+  @Register.factory(ProductDetailsBloc)
+
+  /// Cart
+  @Register.singleton(GetCartUsecase)
+  @Register.singleton(AddToCartUsecase)
+  @Register.singleton(RemoveFromCartUsecase)
+  @Register.factory(CartBloc)
   void _configure();
 }

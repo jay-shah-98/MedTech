@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:medtech/presentation/blocs/cart_bloc/cart_bloc.dart';
+import 'package:medtech/presentation/blocs/product_details_bloc/product_details_bloc.dart';
+import 'package:medtech/presentation/pages/cart/cart_screen.dart';
 import 'package:medtech/presentation/pages/product_details/product_details_screen.dart';
 
 import '../../injector.dart';
@@ -86,8 +89,19 @@ class NavigationUtils {
         );
       case routeProductDetails:
         return MaterialPageRoute(
-          builder: (_) => ProductDetailsScreen(
-            productEntity: args!['product_entity'],
+          builder: (_) => BlocProvider(
+            create: (context) => Injector.resolve<ProductDetailsBloc>(),
+            child: ProductDetailsScreen(
+              productEntity: args!['product_entity'],
+            ),
+          ),
+          settings: settings,
+        );
+      case routeMyCart:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => Injector.resolve<CartBloc>(),
+            child: CartScreen(),
           ),
           settings: settings,
         );

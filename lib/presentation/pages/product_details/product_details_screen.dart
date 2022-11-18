@@ -1,12 +1,13 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:medtech/core/utils/image_resources.dart';
-import 'package:medtech/domain/entities/product_entity.dart';
-import 'package:medtech/presentation/pages/product_details/widget/image_slider_widget.dart';
-import 'package:medtech/presentation/widgets/custom_button.dart';
 
+import '../../../core/utils/image_resources.dart';
+import '../../../domain/entities/product_entity.dart';
+import '../../blocs/product_details_bloc/product_details_bloc.dart';
+import 'widget/image_slider_widget.dart';
+import '../../widgets/custom_button.dart';
 import '../../../core/navigation/navigation_util.dart';
 import '../../../core/utils/color_resources.dart';
 
@@ -126,26 +127,32 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           ],
                         ),
                       ),
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          SvgPicture.asset(
-                            ImageResources.plusSignIcon,
-                            color: ColorResources.blue,
-                          ),
-                          SizedBox(
-                            width: 10.w,
-                          ),
-                          Text(
-                            'Add To Cart',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 14.sp,
+                      GestureDetector(
+                        onTap: () {
+                          context.read<ProductDetailsBloc>().add(AddToCartEvent(
+                              productEntity: widget.productEntity));
+                        },
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            SvgPicture.asset(
+                              ImageResources.plusSignIcon,
                               color: ColorResources.blue,
                             ),
-                          ),
-                        ],
+                            SizedBox(
+                              width: 10.w,
+                            ),
+                            Text(
+                              'Add To Cart',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 14.sp,
+                                color: ColorResources.blue,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -189,7 +196,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   padding: EdgeInsets.only(right: 24.w),
                   child: CustomButton(
                     buttonText: 'Go To Cart',
-                    onTap: () {},
+                    onTap: () {
+                      NavigationUtils.push(context, routeMyCart);
+                    },
                   ),
                 ),
                 SizedBox(
