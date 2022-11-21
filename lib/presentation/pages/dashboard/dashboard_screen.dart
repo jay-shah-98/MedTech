@@ -124,9 +124,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
           IconButton(
             enableFeedback: false,
             onPressed: () {
-              setState(() {
-                pageIndex = 3;
-              });
+              // setState(() {
+              //   pageIndex = 3;
+              // });
+              NavigationUtils.push(context, routeMyCart);
             },
             icon: pageIndex == 3
                 ? SvgPicture.asset(

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:medtech/data/datasources/local_data_source.dart';
+import 'package:medtech/injector.dart';
 import '../../core/utils/image_resources.dart';
 
 import '../../core/navigation/navigation_util.dart';
@@ -14,9 +16,22 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(milliseconds: 500), () {
-      NavigationUtils.push(context, routeOnboarding);
+    getInitState();
+  }
+
+  Future<void> getInitState() async {
+    final status = await getStatus();
+    Future.delayed(const Duration(milliseconds: 500), () async {
+      if (status) {
+        NavigationUtils.pushReplacement(context, routeWelcome);
+      } else {
+        NavigationUtils.pushReplacement(context, routeOnboarding);
+      }
     });
+  }
+
+  Future<bool> getStatus() async {
+    return await Injector.resolve<LocalDataSource>().getOnboardingStatus();
   }
 
   @override

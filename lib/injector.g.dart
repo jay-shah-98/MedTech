@@ -49,11 +49,14 @@ class _$Injector extends Injector {
           (c) => GetCartUsecase(medTechRepository: c<MedTechRepository>()))
       ..registerSingleton(
           (c) => AddToCartUsecase(medTechRepository: c<MedTechRepository>()))
+      ..registerSingleton(
+          (c) => ClearCartUsecase(medTechRepository: c<MedTechRepository>()))
       ..registerSingleton((c) =>
           RemoveFromCartUsecase(medTechRepository: c<MedTechRepository>()))
       ..registerFactory((c) => CartBloc(
           addToCartUsecase: c<AddToCartUsecase>(),
           getCartUsecase: c<GetCartUsecase>(),
+          clearCartUsecase: c<ClearCartUsecase>(),
           removeFromCartUsecase: c<RemoveFromCartUsecase>()));
   }
 }

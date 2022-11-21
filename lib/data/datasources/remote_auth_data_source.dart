@@ -12,6 +12,8 @@ abstract class RemoteAuthDataSource {
 
   Future<User> signIn(String email, String password);
 
+  Future<User> getCurrentUser();
+
   Future<User> signUpWithEmail();
 
   Future signOut();
@@ -73,6 +75,23 @@ class RemoteAuthDataSourceImpl implements RemoteAuthDataSource {
   Future<bool> signOut() async {
     await _auth.signOut();
     return true;
+  }
+
+  @override
+  Future<User> getCurrentUser() async {
+    try {
+      final currentUser = _auth.currentUser;
+      if (currentUser != null) {
+        return currentUser;
+      } else {
+        throw ServerException();
+      }
+    } on FirebaseAuthException catch (e) {
+      final status = AuthExceptionHandler.handleException(e);
+      throw AuthException(status);
+    } catch (e) {
+      rethrow;
+    }
   }
 
   @override

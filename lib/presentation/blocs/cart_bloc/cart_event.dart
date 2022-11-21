@@ -30,3 +30,8 @@ class RemoveFromCart extends CartEvent {
   @override
   List<Object?> get props => [productEntity];
 }
+
+class ClearCartEvent extends CartEvent {
+  @override
+  List<Object?> get props => [];
+}

@@ -1,7 +1,9 @@
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:kiwi/kiwi.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'data/datasources/local_data_source.dart';
 import 'domain/usecases/add_to_cart_usecase.dart';
+import 'domain/usecases/clear_cart_usecase.dart';
 import 'domain/usecases/get_cart_usecase.dart';
 import 'domain/usecases/remove_from_cart_usecase.dart';
 import 'presentation/blocs/cart_bloc/cart_bloc.dart';
@@ -73,6 +75,7 @@ abstract class Injector {
   /// Cart
   @Register.singleton(GetCartUsecase)
   @Register.singleton(AddToCartUsecase)
+  @Register.singleton(ClearCartUsecase)
   @Register.singleton(RemoveFromCartUsecase)
   @Register.factory(CartBloc)
   void _configure();

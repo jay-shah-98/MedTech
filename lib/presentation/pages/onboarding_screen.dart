@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:medtech/injector.dart';
 import '../../core/navigation/navigation_util.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import '../../core/utils/image_resources.dart';
+import '../../data/datasources/local_data_source.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
@@ -15,7 +17,8 @@ class OnboardingScreen extends StatefulWidget {
 class _OnboardingScreenState extends State<OnboardingScreen> {
   final introKey = GlobalKey<IntroductionScreenState>();
 
-  void _onIntroEnd(context) {
+  void _onIntroEnd(context) async {
+    await Injector.resolve<LocalDataSource>().setOnboardingStatus();
     NavigationUtils.pushReplacement(context, routeWelcome);
   }
 

@@ -8,7 +8,16 @@ import '../../../core/utils/color_resources.dart';
 import '../../widgets/custom_button.dart';
 
 class SignupSuccessScreen extends StatefulWidget {
-  const SignupSuccessScreen({Key? key}) : super(key: key);
+  final String title;
+  final String subtitle;
+  final String btnText;
+
+  const SignupSuccessScreen({
+    Key? key,
+    this.title = 'Phone Number Verified',
+    this.subtitle = 'Congratulations, your phone number has been verified. You can start using the app',
+    this.btnText = 'CONTINUE',
+  }) : super(key: key);
 
   @override
   State<SignupSuccessScreen> createState() => _SignupSuccessScreenState();
@@ -62,7 +71,7 @@ class _SignupSuccessScreenState extends State<SignupSuccessScreen> {
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 60.w),
                   child: Text(
-                    'Phone Number Verified',
+                    widget.title,
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
                       fontSize: 24.sp,
@@ -80,7 +89,7 @@ class _SignupSuccessScreenState extends State<SignupSuccessScreen> {
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 60.w),
                   child: Text(
-                    'Congratulations, your phone number has been verified. You can start using the app',
+                    widget.subtitle,
                     style: TextStyle(
                       fontWeight: FontWeight.w300,
                       fontSize: 16.sp,
@@ -96,7 +105,7 @@ class _SignupSuccessScreenState extends State<SignupSuccessScreen> {
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 32.w),
                   child: CustomButton(
-                    buttonText: 'CONTINUE',
+                    buttonText: widget.btnText,
                     onTap: () {
                       NavigationUtils.pushAndRemoveUntil(
                           context, routeDashboard);

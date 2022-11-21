@@ -286,7 +286,19 @@ class CartWidget extends StatelessWidget {
             child: CustomButton(
               buttonText:
                   'Place Order @ \$${cartEntity.finalTotal.toStringAsFixed(2)}',
-              onTap: () {},
+              onTap: () {
+                context.read<CartBloc>().add(ClearCartEvent());
+                NavigationUtils.pushReplacement(
+                  context,
+                  routeSignupSuccess,
+                  arguments: {
+                    'title': 'Thank You',
+                    'subtitle':
+                        'Your Order will be delivered with invoice #9ds69hs. You can track the delivery in the order section.',
+                    'btnTxt': 'Continue Order',
+                  },
+                );
+              },
             ),
           ),
           SizedBox(

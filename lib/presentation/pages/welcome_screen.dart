@@ -67,10 +67,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               SizedBox(
                 height: 10.h,
               ),
-              CustomButton(
-                buttonText: 'CONTINUE WITH GOOGLE',
-                onTap: () {},
-              ),
+              // CustomButton(
+              //   buttonText: 'CONTINUE WITH GOOGLE',
+              //   onTap: () {},
+              // ),
               // SizedBox(
               //   height: 10.h,
               // ),

@@ -136,8 +136,17 @@ class MedTechRepositoryImpl implements MedTechRepository {
       {required ProductEntity productEntity,
       required bool removeProduct}) async {
     try {
-      return Right(
-          await localDataSource.removeFromCart(productEntity: productEntity, removeProduct: removeProduct));
+      return Right(await localDataSource.removeFromCart(
+          productEntity: productEntity, removeProduct: removeProduct));
+    } catch (e) {
+      return const Left(ServerFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> clearCart() async {
+    try {
+      return Right(await localDataSource.clearCart());
     } catch (e) {
       return const Left(ServerFailure());
     }

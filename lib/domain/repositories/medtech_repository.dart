@@ -16,4 +16,6 @@ abstract class MedTechRepository {
   Future<Either<Failure, CartEntity>> removeFromCart({required ProductEntity productEntity, required bool removeProduct});
 
   Future<Either<Failure, CartEntity>> getCart();
+
+  Future<Either<Failure, void>> clearCart();
 }

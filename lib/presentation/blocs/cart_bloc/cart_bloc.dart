@@ -9,6 +9,7 @@ import 'package:medtech/domain/usecases/add_to_cart_usecase.dart';
 import 'package:medtech/domain/usecases/remove_from_cart_usecase.dart';
 
 import '../../../domain/entities/product_entity.dart';
+import '../../../domain/usecases/clear_cart_usecase.dart';
 import '../../../domain/usecases/get_cart_usecase.dart';
 
 part 'cart_event.dart';
@@ -18,11 +19,13 @@ part 'cart_state.dart';
 class CartBloc extends Bloc<CartEvent, CartState> {
   final AddToCartUsecase addToCartUsecase;
   final GetCartUsecase getCartUsecase;
+  final ClearCartUsecase clearCartUsecase;
   final RemoveFromCartUsecase removeFromCartUsecase;
 
   CartBloc({
     required this.addToCartUsecase,
     required this.getCartUsecase,
+    required this.clearCartUsecase,
     required this.removeFromCartUsecase,
   }) : super(CartInitial()) {
     on<GetCartEvent>((event, emit) async {
@@ -51,6 +54,9 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       successOrFailure.fold(
           (failure) => emit(CartFailure(message: failure.toString())),
           (success) => emit(CartSuccess(cartEntity: success)));
+    });
+    on<ClearCartEvent>((event, emit) async {
+      await clearCartUsecase(NoParams());
     });
   }
 }

@@ -1,5 +1,7 @@
+import 'package:medtech/core/error/failure.dart';
 import 'package:medtech/domain/entities/cart_entity.dart';
 import 'package:medtech/domain/entities/product_entity.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class LocalDataSource {
   Future<CartEntity> addToCart({required ProductEntity productEntity});
@@ -8,10 +10,23 @@ abstract class LocalDataSource {
       {required ProductEntity productEntity, required bool removeProduct});
 
   Future<CartEntity> getCart();
+
+  Future<void> clearCart();
+
+  Future<void> setOnboardingStatus();
+
+  Future<bool> getOnboardingStatus();
 }
+
+const onBoardingVisited = 'onboarding_visited';
 
 class LocalDataSourceImpl extends LocalDataSource {
   CartEntity cartEntity = CartEntity();
+  late SharedPreferences sharedPreferences;
+
+  Future<void> getSharedPrefInstance() async {
+    sharedPreferences = await SharedPreferences.getInstance();
+  }
 
   @override
   Future<CartEntity> addToCart({required ProductEntity productEntity}) async {
@@ -54,13 +69,35 @@ class LocalDataSourceImpl extends LocalDataSource {
       for (var product in cartEntity.products) {
         if (product.id == productEntity.id) {
           product.quantity -= 1;
-          if(product.quantity == 0){
+          if (product.quantity == 0) {
             cartEntity.products.remove(product);
           }
           break;
         }
       }
       return cartEntity;
+    }
+  }
+
+  @override
+  Future<bool> getOnboardingStatus() async {
+    await getSharedPrefInstance();
+    final status = sharedPreferences.getBool(onBoardingVisited);
+    return status ?? false;
+  }
+
+  @override
+  Future<void> setOnboardingStatus() async {
+    await getSharedPrefInstance();
+    sharedPreferences.setBool(onBoardingVisited, true);
+  }
+
+  @override
+  Future<void> clearCart() async {
+    try{
+      cartEntity.products.clear();
+    }catch(e){
+      throw const ServerFailure();
     }
   }
 }

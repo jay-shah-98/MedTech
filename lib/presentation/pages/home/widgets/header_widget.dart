@@ -77,11 +77,16 @@ class HeaderWidget extends StatelessWidget {
                       SizedBox(
                         width: 16.w,
                       ),
-                      SvgPicture.asset(
-                        ImageResources.cartIcon,
-                        height: 24.w,
-                        width: 24.w,
-                        color: ColorResources.white,
+                      GestureDetector(
+                        onTap: (){
+                          NavigationUtils.push(context, routeMyCart);
+                        },
+                        child: SvgPicture.asset(
+                          ImageResources.cartIcon,
+                          height: 24.w,
+                          width: 24.w,
+                          color: ColorResources.white,
+                        ),
                       ),
                       SizedBox(
                         width: 26.w,

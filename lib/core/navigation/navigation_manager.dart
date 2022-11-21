@@ -65,10 +65,21 @@ class NavigationUtils {
           settings: settings,
         );
       case routeSignupSuccess:
-        return MaterialPageRoute(
-          builder: (_) => const SignupSuccessScreen(),
-          settings: settings,
-        );
+        if (args == null) {
+          return MaterialPageRoute(
+            builder: (_) => const SignupSuccessScreen(),
+            settings: settings,
+          );
+        } else {
+          return MaterialPageRoute(
+            builder: (_) => SignupSuccessScreen(
+              title: args['title'],
+              subtitle: args['subtitle'],
+              btnText: args['btnTxt'],
+            ),
+            settings: settings,
+          );
+        }
       case routeDashboard:
         return MaterialPageRoute(
           builder: (_) => const DashboardScreen(),
