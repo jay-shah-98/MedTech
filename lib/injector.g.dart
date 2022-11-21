@@ -22,6 +22,8 @@ class _$Injector extends Injector {
           (c) => VerifyOTPUsecase(authRepository: c<AuthRepository>()))
       ..registerSingleton(
           (c) => LoginUsecase(authRepository: c<AuthRepository>()))
+      ..registerSingleton(
+          (c) => IsUserLoggedInUsecase(authRepository: c<AuthRepository>()))
       ..registerFactory((c) => SignupBloc(
           sendOTPUsecase: c<SendOTPUsecase>(),
           verifyOTPUsecase: c<VerifyOTPUsecase>()))

@@ -3,8 +3,11 @@ class UserEntity {
   String email;
   String phoneNumber;
 
-  UserEntity(
-      {required this.name, required this.email, required this.phoneNumber});
+  UserEntity({
+    this.name = '',
+    this.email = '',
+    this.phoneNumber = '',
+  });
 
   @override
   String toString() {

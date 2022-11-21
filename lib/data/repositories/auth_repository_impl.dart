@@ -58,7 +58,8 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Either<Failure, UserEntity>> login({required String email, required String password}) async {
+  Future<Either<Failure, UserEntity>> login(
+      {required String email, required String password}) async {
     if (await networkInfo.isConnected) {
       try {
         final User user = await remoteAuthDataSource.signIn(email, password);
@@ -67,7 +68,7 @@ class AuthRepositoryImpl implements AuthRepository {
           email: user.email ?? '',
           phoneNumber: user.phoneNumber ?? '',
         );
-        Injector.kiwiContainer.registerInstance<UserEntity>(userEntity);
+        Injector.userEntity = userEntity;
         return Right(userEntity);
       } on AuthException catch (e) {
         return Left(ServerFailure(message: e.message));
@@ -78,6 +79,34 @@ class AuthRepositoryImpl implements AuthRepository {
       }
     } else {
       return Left(NetworkFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, bool>> isUserLoggedIn() async {
+    if (await networkInfo.isConnected) {
+      try {
+        final User user = await remoteAuthDataSource.getCurrentUser();
+        UserEntity userEntity = UserEntity(
+          name: user.displayName ?? '',
+          email: user.email ?? '',
+          phoneNumber: user.phoneNumber ?? '',
+        );
+        Injector.userEntity = userEntity;
+        return const Right(true);
+      } on AuthException catch (e) {
+        return const Right(false);
+        // return Left(ServerFailure(message: e.message));
+      } on ServerException {
+        return const Right(false);
+        // return const Left(ServerFailure());
+      } catch (e) {
+        return const Right(false);
+        // return const Left(ServerFailure());
+      }
+    } else {
+      return const Right(false);
+      // return Left(NetworkFailure());
     }
   }
 }

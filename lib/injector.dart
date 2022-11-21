@@ -1,10 +1,11 @@
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:kiwi/kiwi.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'data/datasources/local_data_source.dart';
+import 'domain/entities/user_entity.dart';
 import 'domain/usecases/add_to_cart_usecase.dart';
 import 'domain/usecases/clear_cart_usecase.dart';
 import 'domain/usecases/get_cart_usecase.dart';
+import 'domain/usecases/is_user_logged_in_usecase.dart';
 import 'domain/usecases/remove_from_cart_usecase.dart';
 import 'presentation/blocs/cart_bloc/cart_bloc.dart';
 import 'presentation/blocs/product_details_bloc/product_details_bloc.dart';
@@ -31,6 +32,7 @@ part 'injector.g.dart';
 
 abstract class Injector {
   static late KiwiContainer kiwiContainer;
+  static UserEntity userEntity = UserEntity();
 
   static void setup() {
     kiwiContainer = KiwiContainer();
@@ -50,6 +52,7 @@ abstract class Injector {
   @Register.singleton(SendOTPUsecase)
   @Register.singleton(VerifyOTPUsecase)
   @Register.singleton(LoginUsecase)
+  @Register.singleton(IsUserLoggedInUsecase)
 
   ///AUTH BLOCs
   @Register.factory(SignupBloc)

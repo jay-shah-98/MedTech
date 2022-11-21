@@ -98,13 +98,13 @@ class HeaderWidget extends StatelessWidget {
                   height: 16.h,
                 ),
                 Text(
-                  'Hi, ${Injector.resolve<UserEntity>().name}',
+                  'Hi, ${Injector.userEntity.name}',
                   style: TextStyle(
                     fontWeight: FontWeight.w700,
                     fontSize: 24.sp,
                     color: ColorResources.white,
                   ),
-                ),
+                ),  
                 SizedBox(
                   height: 5.h,
                 ),

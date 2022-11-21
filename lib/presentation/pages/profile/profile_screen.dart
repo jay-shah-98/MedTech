@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:medtech/core/navigation/navigation_util.dart';
+import 'package:medtech/data/datasources/local_data_source.dart';
+import 'package:medtech/data/datasources/remote_auth_data_source.dart';
 import '../../../core/utils/image_resources.dart';
 
 import '../../../core/utils/color_resources.dart';
@@ -15,7 +18,7 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorResources.bgColor,
       body: SingleChildScrollView(
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         child: SizedBox(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
@@ -26,16 +29,34 @@ class ProfileScreen extends StatelessWidget {
               SizedBox(
                 height: MediaQuery.of(context).padding.top,
               ),
-              Padding(
-                padding: EdgeInsets.only(left: 24.w),
-                child: Text(
-                  'Profile',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 16.sp,
-                    color: ColorResources.darkBlue,
+              Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(left: 24.w),
+                    child: Text(
+                      'Profile',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 16.sp,
+                        color: ColorResources.darkBlue,
+                      ),
+                    ),
                   ),
-                ),
+                  const Spacer(),
+                  GestureDetector(
+                    onTap: () async {
+                      await Injector.resolve<LocalDataSource>().clearCart();
+                      await Injector.resolve<RemoteAuthDataSource>().signOut();
+
+                      NavigationUtils.pushAndRemoveUntil(context, routeWelcome);
+
+                    },
+                    child: const Icon(Icons.exit_to_app),
+                  ),
+                  SizedBox(
+                    width: 24.w,
+                  ),
+                ],
               ),
               Expanded(
                 child: SingleChildScrollView(
@@ -68,7 +89,7 @@ class ProfileScreen extends StatelessWidget {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Text(
-                                    'Hi, ${Injector.resolve<UserEntity>().name}',
+                                    'Hi, ${Injector.userEntity.name}',
                                     style: TextStyle(
                                       fontWeight: FontWeight.w700,
                                       fontSize: 20.sp,

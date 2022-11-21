@@ -64,9 +64,11 @@ class RemoteAuthDataSourceImpl implements RemoteAuthDataSource {
         throw ServerException();
       }
     } on FirebaseAuthException catch (e) {
+      print(e);
       final status = AuthExceptionHandler.handleException(e);
       throw AuthException(status);
     } catch (e) {
+      print(e);
       rethrow;
     }
   }

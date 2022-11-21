@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:medtech/core/usecase/usecase.dart';
 import 'package:medtech/data/datasources/local_data_source.dart';
+import 'package:medtech/domain/usecases/is_user_logged_in_usecase.dart';
 import 'package:medtech/injector.dart';
 import '../../core/utils/image_resources.dart';
 
@@ -23,7 +25,17 @@ class _SplashScreenState extends State<SplashScreen> {
     final status = await getStatus();
     Future.delayed(const Duration(milliseconds: 500), () async {
       if (status) {
-        NavigationUtils.pushReplacement(context, routeWelcome);
+        final isLoggedInUsecase = Injector.resolve<IsUserLoggedInUsecase>();
+        final isLoggedIn = await isLoggedInUsecase(NoParams());
+        isLoggedIn.fold(
+            (failed) => NavigationUtils.pushReplacement(context, routeWelcome),
+            (success) {
+          if (success) {
+            NavigationUtils.pushReplacement(context, routeDashboard);
+          } else {
+            NavigationUtils.pushReplacement(context, routeWelcome);
+          }
+        });
       } else {
         NavigationUtils.pushReplacement(context, routeOnboarding);
       }
