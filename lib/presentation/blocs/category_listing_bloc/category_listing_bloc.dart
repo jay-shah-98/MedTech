@@ -1,11 +1,9 @@
-import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../domain/entities/category_listing_entity.dart';
 import '../../../domain/usecases/category_listing_usecase.dart';
 
-import '../../../core/usecase/usecase.dart';
 
 part 'category_listing_event.dart';
 

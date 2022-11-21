@@ -2,7 +2,6 @@ import 'package:dartz/dartz.dart';
 
 import '../../core/error/failure.dart';
 import '../../core/usecase/usecase.dart';
-import '../entities/cart_entity.dart';
 import '../repositories/medtech_repository.dart';
 
 class ClearCartUsecase implements UseCase<dynamic, NoParams> {

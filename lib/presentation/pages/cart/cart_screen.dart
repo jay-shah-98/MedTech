@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:medtech/presentation/blocs/cart_bloc/cart_bloc.dart';
-import 'package:medtech/presentation/pages/cart/widgets/cart_widget.dart';
-import 'package:medtech/presentation/pages/cart/widgets/empty_cart_widget.dart';
+import '../../blocs/cart_bloc/cart_bloc.dart';
+import 'widgets/cart_widget.dart';
+import 'widgets/empty_cart_widget.dart';
 
-import '../../../core/navigation/navigation_util.dart';
 import '../../../core/utils/color_resources.dart';
 
 class CartScreen extends StatefulWidget {

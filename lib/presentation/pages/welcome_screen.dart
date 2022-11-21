@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+
 import '../../core/navigation/navigation_util.dart';
 import '../../core/utils/color_resources.dart';
 import '../../core/utils/image_resources.dart';

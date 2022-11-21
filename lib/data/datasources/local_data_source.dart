@@ -1,6 +1,6 @@
-import 'package:medtech/core/error/failure.dart';
-import 'package:medtech/domain/entities/cart_entity.dart';
-import 'package:medtech/domain/entities/product_entity.dart';
+import '../../core/error/failure.dart';
+import '../../domain/entities/cart_entity.dart';
+import '../../domain/entities/product_entity.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class LocalDataSource {

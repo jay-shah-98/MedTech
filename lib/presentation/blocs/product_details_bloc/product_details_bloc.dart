@@ -1,9 +1,8 @@
-import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:medtech/domain/entities/product_entity.dart';
-import 'package:medtech/domain/usecases/add_to_cart_usecase.dart';
+import '../../../domain/entities/product_entity.dart';
+import '../../../domain/usecases/add_to_cart_usecase.dart';
 
 part 'product_details_event.dart';
 

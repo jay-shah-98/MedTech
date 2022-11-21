@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:medtech/domain/entities/cart_entity.dart';
-import 'package:medtech/presentation/pages/cart/widgets/payment_summary_widget.dart';
-import 'package:medtech/presentation/widgets/custom_button.dart';
+import '../../../../domain/entities/cart_entity.dart';
+import 'payment_summary_widget.dart';
+import '../../../widgets/custom_button.dart';
 
 import '../../../../core/navigation/navigation_util.dart';
 import '../../../../core/utils/color_resources.dart';

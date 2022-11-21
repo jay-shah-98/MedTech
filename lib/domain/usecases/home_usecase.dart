@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import '../repositories/medtech_repository.dart';
 
 import '../../core/error/failure.dart';
 import '../../core/usecase/usecase.dart';
+import '../repositories/medtech_repository.dart';
 
 class HomeUsecase implements UseCase<dynamic, NoParams> {
   final MedTechRepository medTechRepository;

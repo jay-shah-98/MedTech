@@ -1,3 +1,5 @@
+import '../utils/logger.dart';
+
 class ServerException implements Exception {
   String message;
 
@@ -14,8 +16,8 @@ class AuthException implements Exception {
 
 class AuthExceptionHandler {
   static handleException(e) {
-    print(e.code);
-    var status;
+    Logger.log(e.code);
+    late String status;
     switch (e.code) {
       case "invalid-email":
         status = 'Your email address appears to be malformed.';

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:medtech/core/navigation/navigation_util.dart';
+
+import '../../../../core/navigation/navigation_util.dart';
+import '../../../../core/utils/color_resources.dart';
 import '../../../../domain/entities/product_entity.dart';
 import '../../../widgets/product_widget.dart';
-
-import '../../../../core/utils/color_resources.dart';
 
 class DealOfDayWidget extends StatelessWidget {
   final List<ProductEntity> products;

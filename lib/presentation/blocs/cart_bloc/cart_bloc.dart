@@ -1,19 +1,17 @@
-import 'dart:async';
 
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:medtech/core/usecase/usecase.dart';
-import 'package:medtech/domain/entities/cart_entity.dart';
-import 'package:medtech/domain/usecases/add_to_cart_usecase.dart';
-import 'package:medtech/domain/usecases/remove_from_cart_usecase.dart';
 
+import '../../../core/usecase/usecase.dart';
+import '../../../domain/entities/cart_entity.dart';
 import '../../../domain/entities/product_entity.dart';
+import '../../../domain/usecases/add_to_cart_usecase.dart';
 import '../../../domain/usecases/clear_cart_usecase.dart';
 import '../../../domain/usecases/get_cart_usecase.dart';
+import '../../../domain/usecases/remove_from_cart_usecase.dart';
 
 part 'cart_event.dart';
-
 part 'cart_state.dart';
 
 class CartBloc extends Bloc<CartEvent, CartState> {

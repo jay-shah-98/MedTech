@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:medtech/core/usecase/usecase.dart';
-import 'package:medtech/data/datasources/local_data_source.dart';
-import 'package:medtech/domain/usecases/is_user_logged_in_usecase.dart';
-import 'package:medtech/injector.dart';
+import '../../core/usecase/usecase.dart';
+import '../../data/datasources/local_data_source.dart';
+import '../../domain/usecases/is_user_logged_in_usecase.dart';
+import '../../injector.dart';
 import '../../core/utils/image_resources.dart';
 
 import '../../core/navigation/navigation_util.dart';

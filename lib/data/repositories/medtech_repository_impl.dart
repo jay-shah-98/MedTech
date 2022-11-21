@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:medtech/data/datasources/local_data_source.dart';
-import 'package:medtech/domain/entities/cart_entity.dart';
+import '../datasources/local_data_source.dart';
+import '../../domain/entities/cart_entity.dart';
 
 import '../../core/error/exception.dart';
 import '../../core/network/network_info.dart';

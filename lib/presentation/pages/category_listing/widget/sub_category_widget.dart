@@ -4,7 +4,6 @@ import '../../../../domain/entities/sub_category_entity.dart';
 import 'sub_category_product_widget.dart';
 
 import '../../../../core/utils/color_resources.dart';
-import '../../../widgets/product_widget.dart';
 
 class SubCategoryWidget extends StatelessWidget {
   final List<SubCategoryEntity> subCategories;

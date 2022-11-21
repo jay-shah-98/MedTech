@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:medtech/core/navigation/navigation_util.dart';
-import 'package:medtech/data/datasources/local_data_source.dart';
-import 'package:medtech/data/datasources/remote_auth_data_source.dart';
+import '../../../core/navigation/navigation_util.dart';
+import '../../../data/datasources/local_data_source.dart';
+import '../../../data/datasources/remote_auth_data_source.dart';
 import '../../../core/utils/image_resources.dart';
 
 import '../../../core/utils/color_resources.dart';
-import '../../../domain/entities/user_entity.dart';
 import '../../../injector.dart';
 
 class ProfileScreen extends StatelessWidget {

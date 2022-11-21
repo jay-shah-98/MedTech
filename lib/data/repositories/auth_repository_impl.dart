@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:medtech/injector.dart';
+import '../../injector.dart';
 import '../../core/error/exception.dart';
 import '../../core/network/network_info.dart';
 import '../datasources/remote_auth_data_source.dart';
@@ -94,7 +94,7 @@ class AuthRepositoryImpl implements AuthRepository {
         );
         Injector.userEntity = userEntity;
         return const Right(true);
-      } on AuthException catch (e) {
+      } on AuthException {
         return const Right(false);
         // return Left(ServerFailure(message: e.message));
       } on ServerException {

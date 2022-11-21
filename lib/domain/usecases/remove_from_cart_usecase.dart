@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:medtech/domain/entities/product_entity.dart';
+import '../entities/product_entity.dart';
 
 import '../../core/error/failure.dart';
 import '../../core/usecase/usecase.dart';

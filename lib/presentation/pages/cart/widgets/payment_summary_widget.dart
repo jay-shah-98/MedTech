@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../domain/entities/cart_entity.dart';
 import '../../../../core/utils/color_resources.dart';
+import '../../../../domain/entities/cart_entity.dart';
 import 'payment_summary_item_widget.dart';
 
 class PaymentSummaryWidget extends StatelessWidget {
