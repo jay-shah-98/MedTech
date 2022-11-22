@@ -94,8 +94,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           keyboardType: TextInputType.phone,
                           validator: (value) {
                             if (value!.isNotEmpty) {
-                              if (value.length != 10) {
-                                return 'Please enter a valid mobile number';
+                              Pattern pattern =
+                                  r'^(\+91[\-\s]?)?[0]?(91)?[789]\d{9}$';
+                              RegExp regex = RegExp(pattern.toString());
+                              if (!regex.hasMatch(value)) {
+                                return 'Please enter a valid Mobile Number';
                               } else {
                                 return null;
                               }

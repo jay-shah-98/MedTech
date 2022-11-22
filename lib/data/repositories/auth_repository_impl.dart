@@ -44,6 +44,7 @@ class AuthRepositoryImpl implements AuthRepository {
           email: user.email ?? '',
           phoneNumber: user.phoneNumber ?? '',
         );
+        Injector.userEntity = userEntity;
         return Right(userEntity);
       } on AuthException catch (e) {
         return Left(ServerFailure(message: e.message));

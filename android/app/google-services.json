@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "216098069245-2h9s6rvrvb9n6kc686k0ol0sbdpnia6r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mdetech.medtech",
+            "certificate_hash": "0dd5ce65b5c8e621c27ee19daa5c201a07ce78e2"
+          }
+        },
+        {
           "client_id": "216098069245-g2hbdcjgl6oqtiqc6fuq8dcqi99j7l0n.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -31,10 +39,46 @@
               "client_type": 3
             },
             {
-              "client_id": "216098069245-kc26laahecum7s50m3el3djvkm4hpnpn.apps.googleusercontent.com",
+              "client_id": "216098069245-jq87umrgk7s5sc5uemmn1q5c9j1old49.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.medtech.medtech"
+                "bundle_id": "com.example.mdetech.medtech"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:216098069245:android:8f36de9e6f035ecf877c94",
+        "android_client_info": {
+          "package_name": "com.example.medtech.medtech"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "216098069245-g2hbdcjgl6oqtiqc6fuq8dcqi99j7l0n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtBlVPIpUpAshS9e4xqQRJ3iJXpzNA1Ns"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "216098069245-g2hbdcjgl6oqtiqc6fuq8dcqi99j7l0n.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "216098069245-jq87umrgk7s5sc5uemmn1q5c9j1old49.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.mdetech.medtech"
               }
             }
           ]
