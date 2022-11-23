@@ -116,7 +116,7 @@ class CartWidget extends StatelessWidget {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                'Sugar Free Gold',
+                                                cartEntity.products[index].name,
                                                 style: TextStyle(
                                                   fontWeight: FontWeight.w600,
                                                   fontSize: 14.sp,

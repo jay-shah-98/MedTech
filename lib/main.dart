@@ -42,6 +42,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
           scaffoldBackgroundColor: Colors.white,
+          fontFamily: 'Overpass'
         ),
         initialRoute: routeSplash,
         onGenerateRoute: NavigationUtils.generateRoute,
